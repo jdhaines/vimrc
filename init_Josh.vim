@@ -1,7 +1,6 @@
 " The following are required before installation:
 " - git
 " - python 3
-" - Proggy Vector https://github.com/bluescan/proggyfonts
 "
 " Install locations:
 "   Windows:
@@ -15,7 +14,7 @@
 
 if has('win32')
     " Ensure that $HOME points to $USERPROFILE
-    let $HOME = $USERPROFILE
+    " let $HOME = $USERPROFILE
 
     " Set CMD as the windows shell.
     set shell=$COMSPEC
@@ -36,7 +35,7 @@ endif
 " Lines of GUI settings file.
 let s:ginit = [
     \ 'GuiPopupmenu 0',
-    \ 'GuiFont! Source Code Pro:h14'
+    \ 'GuiFont! Lucida Console:h12'
 \ ]
 
 function WriteGUISettings()
@@ -117,13 +116,13 @@ Plug 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
 
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=#303039 ctermbg=3
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#353540 ctermbg=4
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=#32332b ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#272822 ctermbg=4
 
 " lightline --------------------------------------------------------------------
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
-    \ 'colorscheme': 'onedark',
+    \ 'colorscheme': 'monokai',
 \ }
 
 " vim-illuminate ----------------------------------------------------------------
@@ -213,5 +212,10 @@ set backspace=indent,eol,start
 
 " ==============================================================================
 " Theme
-syntax on
+
 colorscheme monokai
+
+" ==============================================================================
+" Git Bash Shell
+
+set shell=D:/ESE/cots/git/2.14.1/x64/bin/bash.exe

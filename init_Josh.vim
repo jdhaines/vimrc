@@ -101,6 +101,17 @@ Plug 'mechatroner/rainbow_csv'
 Plug 'nestorsalceda/vim-strip-trailing-whitespaces'
 Plug 'brooth/far.vim'
 Plug 'airblade/vim-rooter'
+Plug 'tpope/vim-fugitive'
+
+
+" NERDTree --------------------------------------------------------------------------
+"
+Plug 'scrooloose/nerdtree'
+cd C:/Users/u1019077/Documents/git/
+nnoremap <silent> <F2> :NERDTreeFind<CR>
+map <F3> :NERDTreeToggle<CR>
+" open Nerd Tree in folder of file in active buffer
+map <Leader>nt :NERDTree %:p:h<CR>
 
 " ale --------------------------------------------------------------------------
 function! AlePostInstall(info)

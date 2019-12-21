@@ -112,6 +112,7 @@ nnoremap <silent> <F2> :NERDTreeFind<CR>
 map <F3> :NERDTreeToggle<CR>
 " open Nerd Tree in folder of file in active buffer
 map <Leader>nt :NERDTree %:p:h<CR>
+let g:NERDTreeWinSize=60
 
 " ale --------------------------------------------------------------------------
 function! AlePostInstall(info)

@@ -2,6 +2,9 @@
 " - git
 " - python 3
 "
+" Consider these Plugins later:
+" - Goyo
+" - Limelight
 " Install locations:
 "   Windows:
 "       %LOCALAPPDATA%\nvim\init.vim
@@ -35,7 +38,8 @@ endif
 " Lines of GUI settings file.
 let s:ginit = [
     \ 'GuiPopupmenu 0',
-    \ 'GuiFont! Lucida Console:h12'
+    \ 'GuiFont! consolas:h11'
+"    \ 'GuiFont! Input:h14'
 \ ]
 
 function WriteGUISettings()
@@ -47,7 +51,8 @@ endfunction
 if empty(glob(s:ginit_path))
     call WriteGUISettings()
 endif
-
+" Clear search highlighting on esc key press
+nnoremap <esc> :noh<return><esc>
 " ==============================================================================
 " Vim Plug Installation
 
@@ -107,7 +112,7 @@ Plug 'tpope/vim-fugitive'
 " NERDTree --------------------------------------------------------------------------
 "
 Plug 'scrooloose/nerdtree'
-cd C:/Users/u1019077/Documents/git/
+" cd C:/Users/u1019077/Documents/git/
 nnoremap <silent> <F2> :NERDTreeFind<CR>
 map <F3> :NERDTreeToggle<CR>
 " open Nerd Tree in folder of file in active buffer
@@ -142,6 +147,18 @@ Plug 'RRethy/vim-illuminate'
 autocmd VimEnter * :hi illuminatedWord cterm=underline gui=underline
 
 " deoplete ---------------------------------------------------------------------
+" ==============================================================================
+" Environment Settings
+
+if has('win32')
+    " Ensure that $HOME points to $USERPROFILE
+    " let $HOME = $USERPROFILE
+
+    " Set CMD as the windows shell.
+    set shell=$COMSPEC
+endif
+
+" ==============================================================================
 function! DeopletePostInstall(info)
     execute '!' . g:pip . ' install --user --upgrade pynvim'
     execute 'UpdateRemotePlugins'
@@ -204,7 +221,13 @@ set number relativenumber
 " Bindings
 
 " Make ctrl + backspace delete previous word.
-inoremap <C-BS> <C-W>
+nnoremap <C-BS> <C-W>
+nnoremap <Right> :vertical resize +5<CR>
+nnoremap <Left> :vertical resize -5<CR>
+nnoremap <Down> ddp
+nnoremap <Up> ddkP
+nnoremap <C-a> <esc>ggVG<CR>
+vnoremap <C-c> "+y
 
 " ==============================================================================
 " Editor
@@ -230,4 +253,4 @@ colorscheme monokai
 " ==============================================================================
 " Git Bash Shell
 
-set shell=D:/ESE/cots/git/2.14.1/x64/bin/bash.exe
+set shell="D:/ESE/cots/git/2.14.1/x64/bin/bash.exe --login"

@@ -118,6 +118,7 @@ map <F3> :NERDTreeToggle<CR>
 " open Nerd Tree in folder of file in active buffer
 map <Leader>nt :NERDTree %:p:h<CR>
 let g:NERDTreeWinSize=60
+let NERDTreeShowHidden=1
 
 " ale --------------------------------------------------------------------------
 function! AlePostInstall(info)
@@ -189,6 +190,7 @@ endif
 
 call plug#end()
 
+let g:ctrlp_show_hidden=1
 " ==============================================================================
 " Indent
 

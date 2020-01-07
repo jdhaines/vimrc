@@ -37,9 +37,22 @@ endif
 
 " Lines of GUI settings file.
 let s:ginit = [
-    \ 'GuiPopupmenu 0',
-    \ 'GuiFont! consolas:h11'
-"    \ 'GuiFont! Input:h14'
+    \ 'let s:fontsize = 10',
+    \ '"execute "GuiFont! Input:h"    . s:fontsize',
+    \ 'execute "GuiFont! Hack:h"     . s:fontsize',
+    \ '"execute "GuiFont! Consolas:h" . s:fontsize',
+    \ 'function! AdjustFontSize(amount)',
+    \ '  let s:fontsize = s:fontsize+a:amount',
+    \ '  " :execute "GuiFont! Consolas:h" . s:fontsize',
+    \ '  " :execute "GuiFont! Input:h"    . s:fontsize',
+    \ '  :execute "GuiFont! Hack:h"     . s:fontsize',
+    \ 'endfunction',
+    \ '',
+    \ 'noremap <C-ScrollWheelUp> :call AdjustFontSize(1)<CR>',
+    \ 'noremap <C-ScrollWheelDown> :call AdjustFontSize(-1)<CR>',
+    \ 'inoremap <C-ScrollWheelUp> <Esc>:call AdjustFontSize(1)<CR>a',
+    \ 'inoremap <C-ScrollWheelDown> <Esc>:call AdjustFontSize(-1)<CR>a',
+    \ 'GuiPopupmenu 0'
 \ ]
 
 function WriteGUISettings()
@@ -231,6 +244,12 @@ nnoremap <Up> ddkP
 nnoremap <C-a> <esc>ggVG<CR>
 vnoremap <C-c> "+y
 
+" Auto save code folds between sessions
+augroup AutoSaveFolds
+  autocmd!
+  autocmd BufWinLeave * mkview
+  autocmd BufWinEnter * silent loadview
+augroup END
 " ==============================================================================
 " Editor
 

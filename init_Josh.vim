@@ -153,7 +153,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#272822 ctermbg=4
 " lightline --------------------------------------------------------------------
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
-    \ 'colorscheme': 'monokai',
+    \ 'colorscheme': 'molokai',
 \ }
 
 " vim-illuminate ----------------------------------------------------------------
